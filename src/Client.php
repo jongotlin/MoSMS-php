@@ -11,9 +11,6 @@
 
 namespace MoSMS;
 
-/**
- * Client Class
- */
 class Client
 {
     protected $connector;
