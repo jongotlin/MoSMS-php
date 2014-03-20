@@ -1,12 +1,11 @@
 <?php
-/**
- * MoSMS
+/*
+ * This file is part of the MoSMS package.
  *
- * A library written in PHP to communicate with the MoSMS (www.mosms.com) web service.
+ * (c) Timmy Sjöstedt <git@iostream.se>
  *
- * @author Timmy Sjöstedt <mosms@iostream.se>
- * @copyright 2012 Timmy Sjöstedt
- * @license http://www.opensource.org/licenses/mit-license.php MIT
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace MoSMS;
