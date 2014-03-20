@@ -1,0 +1,19 @@
+{
+    "name": "brajox/mosms",
+    "description": "API client for MoSMS payment gateway",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Timmy Sjöstedt",
+            "email": "git@iostream.se"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "brajox\\MoSMS\\": "src/"
+        }
+    }
+}
