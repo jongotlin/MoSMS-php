@@ -8,8 +8,8 @@ Example
 
 ```php
 <?php
-require 'MoSMS/Client.php';
-require 'MoSMS/HTTPConnector.php';
+
+use brajox\MoSMS;
 
 $username = 'username';
 $password = 'password';
