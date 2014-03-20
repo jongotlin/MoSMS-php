@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require __DIR__ .'/../MoSMS/IConnector.php';
+use brajox\MoSMS;
 
 class TestConnector implements MoSMS\IConnector
 {

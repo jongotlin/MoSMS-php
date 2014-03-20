@@ -8,8 +8,9 @@
  * file that was distributed with this source code.
  */
 
-require __DIR__ .'/../MoSMS/Client.php';
 require __DIR__ .'/TestConnector.php';
+
+use brajox\MoSMS;
 
 class ClientTest extends PHPUnit_Framework_TestCase
 {
@@ -78,7 +79,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException MoSMS\NotFoundException
+     * @expectedException brajox\MoSMS\NotFoundException
      */
     public function testListNotFound()
     {

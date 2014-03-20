@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace MoSMS;
+namespace brajox\MoSMS;
 
 class Client
 {
