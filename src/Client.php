@@ -112,6 +112,30 @@ class Client
         $this->password = $password;
     }
 
+    /**
+     * @param string $number
+     * @param string $message
+     *
+     * @throws \LogicException
+     * @throws \InvalidArgumentException
+     */
+    public function sendSms($number, $message) {
+        $result = $this->callConnector(
+            'sms-send',
+            [
+                'type' => 'text',
+                'nr' => $number,
+                'data' => utf8_decode($message),
+            ]
+        );
+
+        if ($result === "7") {
+            throw new \InvalidArgumentException(sprintf('Number %s is not a valid phone number', $number));
+        } elseif ($result === "99") {
+            throw new \LogicException('3rd party error. Detailed message in sms-log');
+        }
+    }
+
     protected function callConnector($page, array $data = array()) {
         $data += array(
             'username' => $this->username,
