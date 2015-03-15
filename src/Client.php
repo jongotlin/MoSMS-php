@@ -117,7 +117,7 @@ class Client
      * @param string $message
      *
      * @throws \LogicException
-     * @throws \InvalidArgumentException
+     * @throws ArgumentsException
      */
     public function sendSms($number, $message) {
         $result = $this->callConnector(
@@ -130,7 +130,7 @@ class Client
         );
 
         if ($result === "7") {
-            throw new \InvalidArgumentException(sprintf('Number %s is not a valid phone number', $number));
+            throw new ArgumentsException(sprintf('Number %s is not a valid phone number', $number));
         } elseif ($result === "99") {
             throw new \LogicException('3rd party error. Detailed message in sms-log');
         }

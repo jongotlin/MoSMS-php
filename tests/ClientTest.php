@@ -122,7 +122,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException brajox\MoSMS\ArgumentsException
      * @expectedExceptionMessage Number asdf is not a valid phone number
      */
     public function testInvalidNumberThrowsException()
