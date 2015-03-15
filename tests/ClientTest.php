@@ -118,7 +118,10 @@ class ClientTest extends PHPUnit_Framework_TestCase
     public function testNumberAndMessageAreSentToMoSms()
     {
         $this->C->setExpectedInput('/se/sms-send.php?type=text&nr=07011111111&data=Foo+bar+baz+%E5%E4%F6&username=foo&password=bar');
-        $this->M->sendSms('07011111111', 'Foo bar baz åäö');
+        $this->C->setResponse('0');
+
+        $result = $this->M->sendSms('07011111111', 'Foo bar baz åäö');
+        $this->assertTrue($result);
     }
 
     /**

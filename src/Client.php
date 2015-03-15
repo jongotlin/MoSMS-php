@@ -116,6 +116,7 @@ class Client
      * @param string $number
      * @param string $message
      *
+     * @return boolean True if SMS was sent, false otherwise
      * @throws RuntimeException
      * @throws ArgumentsException
      */
@@ -134,6 +135,8 @@ class Client
         } elseif ($result === "99") {
             throw new RuntimeException('3rd party error. Detailed message in sms-log');
         }
+
+        return $result === "0";
     }
 
     protected function callConnector($page, array $data = array()) {
