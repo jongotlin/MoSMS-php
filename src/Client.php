@@ -112,6 +112,33 @@ class Client
         $this->password = $password;
     }
 
+    /**
+     * @param string $number
+     * @param string $message
+     *
+     * @return boolean True if SMS was sent, false otherwise
+     * @throws RuntimeException
+     * @throws ArgumentsException
+     */
+    public function sendSms($number, $message) {
+        $result = $this->callConnector(
+            'sms-send',
+            [
+                'type' => 'text',
+                'nr' => $number,
+                'data' => utf8_decode($message),
+            ]
+        );
+
+        if ($result === "7") {
+            throw new ArgumentsException(sprintf('Number %s is not a valid phone number', $number));
+        } elseif ($result === "99") {
+            throw new RuntimeException('3rd party error. Detailed message in sms-log');
+        }
+
+        return $result === "0";
+    }
+
     protected function callConnector($page, array $data = array()) {
         $data += array(
             'username' => $this->username,
@@ -138,3 +165,4 @@ class Exception extends \Exception {}
 class AuthException extends Exception {}
 class ArgumentsException extends Exception {}
 class NotFoundException extends Exception {}
+class RuntimeException extends Exception {}

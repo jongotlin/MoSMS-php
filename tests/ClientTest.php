@@ -114,4 +114,24 @@ class ClientTest extends PHPUnit_Framework_TestCase
             )
         );
     }
+
+    public function testNumberAndMessageAreSentToMoSms()
+    {
+        $this->C->setExpectedInput('/se/sms-send.php?type=text&nr=07011111111&data=Foo+bar+baz+%E5%E4%F6&username=foo&password=bar');
+        $this->C->setResponse('0');
+
+        $result = $this->M->sendSms('07011111111', 'Foo bar baz åäö');
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @expectedException brajox\MoSMS\ArgumentsException
+     * @expectedExceptionMessage Number asdf is not a valid phone number
+     */
+    public function testInvalidNumberThrowsException()
+    {
+        $this->C->setExpectedInput('/se/sms-send.php?type=text&nr=asdf&data=Foo+bar&username=foo&password=bar');
+        $this->C->setResponse('7');
+        $this->M->sendSms('asdf', 'Foo bar');
+    }
 }
