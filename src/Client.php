@@ -116,7 +116,7 @@ class Client
      * @param string $number
      * @param string $message
      *
-     * @throws \LogicException
+     * @throws RuntimeException
      * @throws ArgumentsException
      */
     public function sendSms($number, $message) {
@@ -132,7 +132,7 @@ class Client
         if ($result === "7") {
             throw new ArgumentsException(sprintf('Number %s is not a valid phone number', $number));
         } elseif ($result === "99") {
-            throw new \LogicException('3rd party error. Detailed message in sms-log');
+            throw new RuntimeException('3rd party error. Detailed message in sms-log');
         }
     }
 
@@ -162,3 +162,4 @@ class Exception extends \Exception {}
 class AuthException extends Exception {}
 class ArgumentsException extends Exception {}
 class NotFoundException extends Exception {}
+class RuntimeException extends Exception {}
